@@ -42,16 +42,6 @@ async function getSongs() {
   "https://sarthakgupta124.github.io/spotify_clone/songs/Pta%20Mainu.mp3",
   "https://sarthakgupta124.github.io/spotify_clone/songs/Tauba%20Tauba%20.mp3",
   "https://sarthakgupta124.github.io/spotify_clone/songs/Wavy.mp3"];
-  let response = await a.text();
-  let div = document.createElement("div");
-  div.innerHTML = response;
-  let as = div.getElementsByTagName("a");
-  for (let index = 0; index < as.length; index++) {
-    const element = as[index];
-    if (element.href.endsWith(".mp3")) {
-      songs.push(element.href);
-    }
-  }
   return songs;
 }
 const playmusic=(track)=>{
