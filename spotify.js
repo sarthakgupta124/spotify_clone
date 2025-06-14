@@ -29,19 +29,8 @@ let currentsong=new Audio();
 
 
 let songs = [];
-async function getSongs() {
-  let a = ["https://sarthakgupta124.github.io/spotify_clone/songs/128-410%20-%20Sidhu%20Moose%20Wala%20128%20Kbps.mp3",
-  "https://sarthakgupta124.github.io/spotify_clone/songs/128-GOAT%20-%20GOAT%20128%20Kbps.mp3",
-  "https://sarthakgupta124.github.io/spotify_clone/songs/128-The%20Last%20Ride%20-%20Sidhu%20Moose%20Wala%20128%20Kbps.mp3",
-  "https://sarthakgupta124.github.io/spotify_clone/songs/1Karan%20Aujla.mp3",
-  "https://sarthakgupta124.github.io/spotify_clone/songs/295.mp3",
-  "https://sarthakgupta124.github.io/spotify_clone/songs/52Bars.mp3",
-  "https://sarthakgupta124.github.io/spotify_clone/songs/9_45-(Mr-Jat.in).mp3",
-  "https://sarthakgupta124.github.io/spotify_clone/songs/Challa.mp3",
-  "https://sarthakgupta124.github.io/spotify_clone/songs/Nain%20Tere(KoshalWorld.Com).mp3",
-  "https://sarthakgupta124.github.io/spotify_clone/songs/Pta%20Mainu.mp3",
-  "https://sarthakgupta124.github.io/spotify_clone/songs/Tauba%20Tauba%20.mp3",
-  "https://sarthakgupta124.github.io/spotify_clone/songs/Wavy.mp3"];
+function getSongs() {
+  let songs = ["https://sarthakgupta124.github.io/spotify_clone/songs/128-410%20-%20Sidhu%20Moose%20Wala%20128%20Kbps.mp3","https://sarthakgupta124.github.io/spotify_clone/songs/128-GOAT%20-%20GOAT%20128%20Kbps.mp3","https://sarthakgupta124.github.io/spotify_clone/songs/128-The%20Last%20Ride%20-%20Sidhu%20Moose%20Wala%20128%20Kbps.mp3","https://sarthakgupta124.github.io/spotify_clone/songs/1Karan%20Aujla.mp3","https://sarthakgupta124.github.io/spotify_clone/songs/295.mp3","https://sarthakgupta124.github.io/spotify_clone/songs/52Bars.mp3","https://sarthakgupta124.github.io/spotify_clone/songs/9_45-(Mr-Jat.in).mp3","https://sarthakgupta124.github.io/spotify_clone/songs/Challa.mp3","https://sarthakgupta124.github.io/spotify_clone/songs/Nain%20Tere(KoshalWorld.Com).mp3","https://sarthakgupta124.github.io/spotify_clone/songs/Pta%20Mainu.mp3","https://sarthakgupta124.github.io/spotify_clone/songs/Tauba%20Tauba%20.mp3","https://sarthakgupta124.github.io/spotify_clone/songs/Wavy.mp3"];
   return songs;
 }
 const playmusic=(track)=>{
