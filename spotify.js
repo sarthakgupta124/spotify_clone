@@ -30,7 +30,7 @@ let currentsong=new Audio();
 
 let songs = [];
 async function getSongs() {
-  let a = await fetch(" https://sarthakgupta124.github.io/spotify_clone/songs");
+  let a = await fetch(" https://sarthakgupta124.github.io/spotify_clone/songs/");
   let response = await a.text();
   let div = document.createElement("div");
   div.innerHTML = response;
