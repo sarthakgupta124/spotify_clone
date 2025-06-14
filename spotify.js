@@ -1,0 +1,125 @@
+// console.log("Lets write javascript");
+// const a = document.getElementById("ima");
+// a.addEventListener("click", () => {
+//     var audio = new Audio('./songs/challa.mp3');
+//     audio.play();
+// })
+// async function main(){
+//     let a = await fetch("./songs");
+//     let responce = a.text;
+//     console.log(responce);
+//     let div=document.createElement("div")
+//     div.innerHTML=responce;
+//     let tds=div.getElementsByTagName("td")
+//     console.log(tds)
+// }
+// main()
+
+function convertSeconds(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  const formattedSeconds = remainingSeconds.toFixed(0).padStart(2, '0'); // Ensures two-digit format
+  return `${minutes}:${formattedSeconds}`;
+}
+
+
+console.log('Lets write JavaScript');
+let currentsong=new Audio();
+
+
+
+let songs = [];
+async function getSongs() {
+  let a = await fetch("songs");
+  let response = await a.text();
+  let div = document.createElement("div");
+  div.innerHTML = response;
+  let as = div.getElementsByTagName("a");
+  for (let index = 0; index < as.length; index++) {
+    const element = as[index];
+    if (element.href.endsWith(".mp3")) {
+      songs.push(element.href);
+    }
+  }
+  return songs;
+}
+const playmusic=(track)=>{
+  currentsong.src=`${track}`
+  currentsong.play()
+  play.src="pause.svg"
+  document.querySelector(".songinfo").innerHTML=track.split("/songs/")[1].replaceAll("%20", " ");
+ 
+ 
+}
+
+async function main(){
+  let songs = await getSongs();
+  console.log(songs);
+
+
+  const f=Array.from(document.querySelector(".cardcontainer").getElementsByClassName("card"));
+  let i=0;
+  f.forEach(e=>{
+
+      e.insertAdjacentHTML("afterbegin", `
+                          <div class="info">
+                              <div class="songin">${songs[i]}</div>
+                              
+                          </div>`);
+      i++;
+    })
+  
+  const t = Array.from(document.querySelector(".cardcontainer").getElementsByClassName("card"));
+
+  t.forEach(e => {
+    e.addEventListener("click", () =>{
+      
+      playmusic(e.querySelector(".info").firstElementChild.innerHTML);
+    });  
+  })
+  play.addEventListener("click",()=>{
+    if(currentsong.paused){
+      currentsong.play();
+      play.src="pause.svg"
+    }
+    else{
+      currentsong.pause();
+      play.src="playbutton.svg"
+    }
+  })
+  
+  currentsong.addEventListener("timeupdate",()=>{
+     document.querySelector(".songtime").innerHTML=`${convertSeconds(currentsong.currentTime) + "/" + convertSeconds(currentsong.duration)}`
+     if(window.innerWidth>=1400){
+      document.querySelector(".circle").style.left=25 + (currentsong.currentTime)/(currentsong.duration)*100+"%"
+
+     }
+     else if(window.innerWidth<1400){
+      document.querySelector(".circle").style.left=-0.9 + (currentsong.currentTime)/(currentsong.duration)*100+"%"
+     }  
+  })
+}
+main();
+document.querySelector(".hamberger").addEventListener("click",()=>{
+  document.querySelector(".left").style.left="0%";
+
+})
+document.querySelector(".cross").addEventListener("click",()=>{
+  document.querySelector(".left").style.left="-100%";
+
+})
+const k =(document.querySelector(".songlist").getElementsByTagName("li"))
+
+document.querySelector(".previous").addEventListener("click",()=>{
+  const g=songs[songs.indexOf(currentsong.src)-1]
+  playmusic(g)
+  
+  
+})
+document.querySelector(".next").addEventListener("click",()=>{
+  // console.log(currentsong.src)
+  const g=songs[songs.indexOf(currentsong.src)+1]
+  playmusic(g)
+  
+
+})

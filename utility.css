@@ -1,0 +1,18 @@
+.flex{
+    display:flex;
+}
+.align_item{
+    align-items: center;
+}
+.justify_content{
+    justify-content: center;
+}
+.marginleft{
+    margin-left: 10px;
+}
+.margin{
+    margin: 10px;
+}
+.invert{
+    filter:invert(1);
+}
