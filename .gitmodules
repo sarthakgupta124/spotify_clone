@@ -1,0 +1,3 @@
+[submodule "PROJECTS_WEB_DEVELOPMENT/SPOTIFY"]
+	path = PROJECTS_WEB_DEVELOPMENT/SPOTIFY
+	url = https://github.com/sarthakgupta124/spotify_clone.git
