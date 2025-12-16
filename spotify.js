@@ -1,20 +1,3 @@
-// console.log("Lets write javascript");
-// const a = document.getElementById("ima");
-// a.addEventListener("click", () => {
-//     var audio = new Audio('./songs/challa.mp3');
-//     audio.play();
-// })
-// async function main(){
-//     let a = await fetch("./songs");
-//     let responce = a.text;
-//     console.log(responce);
-//     let div=document.createElement("div")
-//     div.innerHTML=responce;
-//     let tds=div.getElementsByTagName("td")
-//     console.log(tds)
-// }
-// main()
-
 function convertSeconds(seconds) {
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
@@ -30,17 +13,20 @@ let currentsong=new Audio();
 
 let songs = [];
 async function getSongs() {
-  let a = await fetch("songs");
-  let response = await a.text();
-  let div = document.createElement("div");
-  div.innerHTML = response;
-  let as = div.getElementsByTagName("a");
-  for (let index = 0; index < as.length; index++) {
-    const element = as[index];
-    if (element.href.endsWith(".mp3")) {
-      songs.push(element.href);
-    }
-  }
+  songs = [
+    "https://sarthakgupta124.github.io/spotify_clone/songs/128-410%20-%20Sidhu%20Moose%20Wala%20128%20Kbps.mp3",
+    "https://sarthakgupta124.github.io/spotify_clone/songs/128-GOAT%20-%20GOAT%20128%20Kbps.mp3",
+    "https://sarthakgupta124.github.io/spotify_clone/songs/128-The%20Last%20Ride%20-%20Sidhu%20Moose%20Wala%20128%20Kbps.mp3",
+    "https://sarthakgupta124.github.io/spotify_clone/songs/1Karan%20Aujla.mp3",
+    "https://sarthakgupta124.github.io/spotify_clone/songs/295.mp3",
+    "https://sarthakgupta124.github.io/spotify_clone/songs/52Bars.mp3",
+    "https://sarthakgupta124.github.io/spotify_clone/songs/9_45-(Mr-Jat.in).mp3",
+    "https://sarthakgupta124.github.io/spotify_clone/songs/Challa.mp3",
+    "https://sarthakgupta124.github.io/spotify_clone/songs/Nain%20Tere(KoshalWorld.Com).mp3",
+    "https://sarthakgupta124.github.io/spotify_clone/songs/Pta%20Mainu.mp3",
+    "https://sarthakgupta124.github.io/spotify_clone/songs/Tauba%20Tauba%20.mp3",
+    "https://sarthakgupta124.github.io/spotify_clone/songs/Wavy.mp3"
+  ];
   return songs;
 }
 const playmusic=(track)=>{
@@ -67,7 +53,7 @@ async function main(){
                               
                           </div>`);
       i++;
-    })
+    });
   
   const t = Array.from(document.querySelector(".cardcontainer").getElementsByClassName("card"));
 
@@ -76,7 +62,7 @@ async function main(){
       
       playmusic(e.querySelector(".info").firstElementChild.innerHTML);
     });  
-  })
+  });
   play.addEventListener("click",()=>{
     if(currentsong.paused){
       currentsong.play();
@@ -86,7 +72,7 @@ async function main(){
       currentsong.pause();
       play.src="playbutton.svg"
     }
-  })
+  });
   
   currentsong.addEventListener("timeupdate",()=>{
      document.querySelector(".songtime").innerHTML=`${convertSeconds(currentsong.currentTime) + "/" + convertSeconds(currentsong.duration)}`
@@ -103,11 +89,11 @@ main();
 document.querySelector(".hamberger").addEventListener("click",()=>{
   document.querySelector(".left").style.left="0%";
 
-})
+});
 document.querySelector(".cross").addEventListener("click",()=>{
   document.querySelector(".left").style.left="-100%";
 
-})
+});
 const k =(document.querySelector(".songlist").getElementsByTagName("li"))
 
 document.querySelector(".previous").addEventListener("click",()=>{
@@ -115,11 +101,11 @@ document.querySelector(".previous").addEventListener("click",()=>{
   playmusic(g)
   
   
-})
+});
 document.querySelector(".next").addEventListener("click",()=>{
   // console.log(currentsong.src)
   const g=songs[songs.indexOf(currentsong.src)+1]
   playmusic(g)
   
 
-})
+});
